@@ -1,0 +1,10 @@
+
+  <!--custom grid component-->
+  <div class="container" demo title="Custom Grid" *ngIf="!flag">
+    <div class="gridStyle">
+      <custom-grid [griddata]='dataService.gridData[0]' [columnHeaders]='gridListColumnHeaders' [headerimgurl]='gridImageUrl'
+        [showheader]='true' 
+        [sort]="sorting">
+      </custom-grid>
+    </div>
+  </div>

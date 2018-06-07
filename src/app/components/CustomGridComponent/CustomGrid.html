@@ -1,0 +1,36 @@
+<div class="custom-grid-panel" *ngIf="!flag">
+    <div class="row" align="left" class="custom-grid-panel-header">
+        <div class="custom-grid-panel-header-text">
+            <img *ngIf="headerimgurl" class="custom-grid-panel-image" [src]="headerimgurl" /> {{headertext}}Click on headers for sorting
+        </div>
+        <div class="custom-grid-panel-search-box">
+            <input style="height:25px;" type="text" name="search" placeholder="Search text here..." [(ngModel)]="stringFilter" />
+        </div>
+
+
+
+    </div>
+    <div class="custom-grid-content">
+        <button class="add" (click)="addEmployeeData()">Add New</button>
+
+        <div class="table-responsive">
+            <table>
+
+                <thead>
+                    <tr>
+                        <th (click)="changeSorting(columns.id)" *ngFor="let columns of columnHeaders let index = index">
+                            {{columns.columnName}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="griddata">
+                    <tr *ngFor="let object of griddata  |  orderBy : convertSorting()  | filter :stringFilter;let index=index; ">
+                        <td [ngStyle]="{'width': column.length}" (click)="editEmplyeeData(object,column.id)" *ngFor="let column of columnHeaders">
+                            {{object[column.id]}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <router-outlet></router-outlet>
+    </div>

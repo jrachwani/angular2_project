@@ -1,0 +1,57 @@
+<div class="container">
+    <button style="left:0px" (click)="back()">Back</button>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 panel-top shadow">
+        <form [formGroup]="myForm" (ngSubmit)="save(myForm.value)">
+            <div class="form-group">
+                <label for="">Id</label>
+                <input type="number" class="form-control" formControlName="id" >
+                <p *ngIf="myForm.controls.id.errors && myForm.controls.id.touched" class="errormsg">* This field is required!</p>
+
+            </div>
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" formControlName="name" >
+                <p *ngIf="myForm.controls.name.minLength && myForm.controls.name.touched" class="errormsg">* This field is required!</p>
+                <p class="alert alert-danger" *ngIf="myForm.controls['name'].hasError('minlength')">
+                    Your phone must be at least 4 characters long.
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="">Phone</label>
+                <input type="text" class="form-control" formControlName="phone">
+                <p *ngIf="myForm.controls.phone.errors && myForm.controls.phone.touched" class="errormsg">* This field is required!</p>
+
+            </div>
+            <div class="form-group">
+                <label for="">city</label>
+                <input type="text" class="form-control" formControlName="city">
+                <p *ngIf="myForm.controls.city.errors && myForm.controls.city.touched" class="errormsg">* This field is required!</p>
+
+            </div>
+            <div class="form-group">
+                <label for="">Address 1</label>
+                <input type="text" class="form-control" formControlName="address_line1">
+                <p *ngIf="myForm.controls.address_line1.errors && myForm.controls.address_line1.touched" class="errormsg">* This field is required!</p>
+
+            </div>
+            <div class="form-group">
+                <label for="">Address 2</label>
+                <input type="text" class="form-control" formControlName="address_line2">
+                <p *ngIf="myForm.controls.address_line2.errors && myForm.controls.address_line2.touched" class="errormsg">* This field is required!</p>
+
+            </div>
+            <div class="form-group">
+                <label for="">Postal Code</label>
+                <input type="text" class="form-control" formControlName="postal_code">
+                <p *ngIf="myForm.controls.postal_code.errors && myForm.controls.postal_code.touched" class="errormsg">* This field is required!</p>
+            </div>
+
+            <button type="submit" style="padding: 0.899vh 1.799vh;margin-bottom: 1vh;" class="btn btn-success">Submit</button>
+
+
+            <!-- <div *ngIf="submitCheckFlag" class="margin-20">
+                <p>Data Submitted successfully click on back button to check or edit</p>
+            </div> -->
+        </form>
+    </div>
+</div>
